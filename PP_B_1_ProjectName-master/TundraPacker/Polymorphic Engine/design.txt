@@ -1,0 +1,6 @@
+
+A function is a series of instructions within a program
+
+A function has many instructions
+
+Instructions can only be part of one function

@@ -1,0 +1,38 @@
+# FOR USE WHEN DEPLOYING TO DIGITALOCEAN/CLOUD ONLY (PRODUCTION)
+
+version: '3'
+
+services:
+  nginx:
+    build: 
+      context: .
+      dockerfile: Dockerfile_nginx_prod
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - static-volume:/var/www/static
+      - media-vol:/django/media
+    depends_on:
+      - web
+
+  db:
+    image: postgres:latest
+    container_name: db
+ 
+  web:
+    build: .
+    command: bash -c "./wait-for.sh db:5432 -t 0 && python manage.py makemigrations && python manage.py migrate && gunicorn malweb.wsgi -b 0.0.0.0:8000 --reload"
+    depends_on:
+      - db
+    volumes:
+      - static-volume:/var/www/static
+      - media-vol:/django/media
+    expose:
+      - "8000"
+    container_name: web
+
+volumes:
+  static-volume:
+  media-vol:

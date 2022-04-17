@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Help{% endblock %}
+{% block nav-help %}
+<li class="nav-item active">
+  <a class="nav-link" href="/help/">Help<span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
+
+{% block content %}
+<h1>Help</h1>
+<div class="container-fluid row justify-content-center">
+<div class="col-xs" style="width:50%;margin-bottom:50px;outline:1px solid gray; outline-offset:10px">
+<h2>-- Build System Documentation -- </h2>
+<h3>Overview</h3>
+<p>This is a basic prototype of the builder used for the 309 project. The builder is a Zeus style builder which patches the binary at certain offsets. The builder produces an agent.exe file from the package.zip file which contains both a manifest as well as the template binary for the builder to use.</p>
+<h3>Builder Usage</h3>
+<p>You must have python 3 installed as well as the pefile python library in order to run the builder application. It is a command line application which will display prompts on the configurable variables. In the future we plan to have the web app generate the user interface for configuration based on the manifest file bundled with the package.</p>
+<h3>Installer Usage</h3>
+<p>After running the builder.py the builder will output an agent.exe file. Copy this agent.exe into the installer folder and zip it up. Run the install.bat script on the target system</p>
+</div>
+</div>
+{% endblock %}

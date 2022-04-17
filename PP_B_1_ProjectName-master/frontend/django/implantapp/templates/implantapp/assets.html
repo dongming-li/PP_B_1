@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Assets{% endblock %}
+{% block nav-assets %}
+<li class="nav-item active">
+  <a class="nav-link" href="/assets/">Assets<span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
+{% block content %}
+<h1>Assets</h1>
+{% if files %}
+<div class="container-fluid">
+{% for file in files %}
+<div class="row justify-content-center">
+  <div class="col-xs" style="width:50%;margin-bottom:50px;outline:1px solid gray; outline-offset:10px">
+    <p><strong>File name:</strong> {{ file.data.name }}</p>
+    <p><strong>Implant:</strong> {{file.implantID }}</p>
+    {% if file.file_type == 'image' %}
+    <img src="/media/{{ file.data }}" alt="{{ file.data.name }}" style="max-width:100%;max-height:100%;">
+    {% endif %}
+    {% if file.file_type == 'text' %}
+    <iframe src="/media/{{ file.data }}" style="width:100%;height:200px;wordwrap:normal;" scrolling="yes">
+    </iframe>
+    {% endif %}
+    <a href="/media/{{ file.data }}" download="" class="btn btn-info">Download file</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<h2>You do not have any files yet.</h2>
+<a href="{% url 'implants' %}" class="btn btn-lg btn-info">Check on your implants</a>
+{% endif %}
+{% endblock %}

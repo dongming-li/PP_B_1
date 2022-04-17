@@ -1,0 +1,90 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Home{% endblock title %} | TundraPacket ET</title>
+    {% block favicon %}<link rel="icon" type="image/png" href="{% static 'implantapp/images/favicon.ico' %}">{% endblock favicon %}
+    {% block head_meta %}
+      {%  block head_meta_charset %}
+        <meta charset="utf-8">
+      {% endblock head_meta_charset%}
+      {% block head_meta_viewport %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+    {% block head_css %}
+      {% block head_css_site %}
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'implantapp/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Base css -->
+        <link href="{% static 'implantapp/css/base.css' %}" rel="stylesheet">
+      {% endblock head_css_site %}
+      {% block head_css_page %}{% endblock head_css_page %}
+    {% endblock head_css %}
+  </head>
+
+  <body>
+    {# NAVIGATIONAL MENU #}
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">TundraPacket Implants</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            {% block nav-home %}<li class="nav-item">
+             <a class="nav-link" href="/">Home</a>
+            </li>{% endblock %}
+            {% if user.is_authenticated %}
+            {% block nav-implants %}<li class="nav-item">
+              <a class="nav-link" href="/implants/">Implants</a>
+            </li>{% endblock %}
+            {% block nav-assets %}<li class="nav-item">
+              <a class="nav-link" href="/assets/">Assets</a>
+            </li>{% endblock %}
+            {% block nav-help %}<li class="nav-item">
+               <a class="nav-link" href="/help/">Help</a>
+            </li>{% endblock %}
+            {% else %}
+            {% block nav-contact %}<li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+            {% endblock %}
+            {%endif %}
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            {% if user.is_authenticated %}
+              <a href='{% url 'create' %}' class="btn btn-outline-info my-2 mx-2 my-sm-0" role="button">+ Add Implant</a>
+              <a href='{% url 'logout' %}' class="btn btn-outline-danger my-2 my-sm-0" role="button">Logout</a>
+            {% else %}
+              <div class="btn-group">
+                <a href='/signup/' class="btn btn-outline-success my-2 my-sm-0" role="button">Create Account</a>
+                <a href='{% url 'login' %}' class="btn btn-outline-success my-2 my-sm-0" role="button">Login</a>
+              </div>
+            {% endif %}
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main class="text-center">
+    {% block content %}{% endblock content %}
+    </main>
+    <footer class="footer">
+      <div class="container text-center">
+        <span class="text-muted"><strong style="color:red">Alpha</strong> Version 0.1.1 | This code is to be used for educational purposes only.</span>
+      </div>
+    </footer>
+    {# JAVASCRIPT BLOCK #}
+    {% block footer_js %}
+      {% block footer_js_site %}  
+        <script src="{% static 'implantapp/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'implantapp/js/popper.min.js' %}"></script>
+        <script src="{% static 'implantapp/js/bootstrap.min.js' %}"></script>
+      {% endblock footer_js_site %}
+      {% block footer_js_section %}{% endblock footer_js_section %}
+      {% block footer_js_page %}{% endblock footer_js_page %}
+    {% endblock footer_js %}
+  </body>
+</html>

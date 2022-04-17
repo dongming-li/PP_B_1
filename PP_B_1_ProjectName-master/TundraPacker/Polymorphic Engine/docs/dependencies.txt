@@ -1,0 +1,12 @@
+
+Capstone Engine
+
+sudo pip install capstone
+
+keystone-engine (cmake)
+
+py2exe
+
+cougher (COFF library)
+pefile (PE File library?!?!)
+

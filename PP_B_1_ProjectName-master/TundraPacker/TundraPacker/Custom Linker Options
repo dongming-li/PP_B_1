@@ -1,0 +1,3 @@
+C:\IG\commandctr>link implant.obj /out:implant.exe /MERGE:.data=.text /map:implant.map
+
+http://www.exploit-monday.com/2013/08/writing-optimized-windows-shellcode-in-c.html

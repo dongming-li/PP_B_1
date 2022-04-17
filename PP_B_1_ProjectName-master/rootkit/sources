@@ -1,0 +1,17 @@
+TARGETNAME = fdisk
+TARGETPATH = obj
+TARGETTYPE = DRIVER
+INCLUDES = %BUILD%\inc
+SOURCES = igmain.c    \
+	  vfs.c     \
+	  format.c  \
+	  ioctl.c   \
+	  vfscompat.c  \
+	  vfsio.c   \
+          vfsworker.c  \
+	  xtea.c    \
+	  keylog.c     \
+	  keyboardio.c \
+	  klogcompat.c     \
+	  klogworker.c     \
+          keymap.c     \

@@ -1,0 +1,4 @@
+FROM nginx:latest
+
+RUN rm -f /etc/nginx/conf.d/default.conf
+COPY /config/nginx/django.prod.conf /etc/nginx/nginx.conf

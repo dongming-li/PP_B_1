@@ -1,0 +1,28 @@
+p {
+  text-align:center;
+}
+
+.form {
+  display:block;
+  text-align:center;
+}
+
+.form_main {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:right;
+  display:inline-block;
+  
+}
+
+.form_main > p {
+ text-align:right;
+}
+
+h1 {
+  text-align:center;
+}
+
+td {
+  text-align:right;
+}

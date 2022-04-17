@@ -1,0 +1,64 @@
+{
+    "info": {
+        "type": "manifest",
+        "version": "1.0"
+    },
+    "binaries": [
+        {
+            "id": "agent",
+            "bin": "agent.exe",
+            "map": "agent.map",
+            "variables": [
+                {
+                    "name": "hostname",
+                    "obfuscation": "none"
+                },
+                {
+                    "name": "botnetid",
+                    "obfuscation": "none"
+                },
+                {
+                    "name": "built",
+                    "obfuscation": "none"
+                }
+            ]
+        }
+    ],
+    "configurables": [
+        {
+            "name": "hostname",
+            "description": "Host to connect to in order to recieve commands",
+            "type": "string",
+            "length": "256"
+        },
+        {
+            "name": "botnetid",
+            "description": "Sub-Botnet Identifier",
+            "type": "string",
+            "size": "256"
+        },
+        {
+            "name": "built",
+            "description": "Says if bot hasbeen build should be automatically generated, but is not for now",
+            "type": "string",
+            "size": "4"
+        }
+    ],
+    "relocations": [
+        {
+            "id": "agent",
+            "varid": "hostname",
+            "offset": "0x29a00"
+        },
+        {
+            "id": "agent",
+            "varid": "botnetid",
+            "offset": "0x29b00"
+        },
+        {
+            "id": "agent",
+            "varid": "built",
+            "offset": "0x2aa08"
+        }
+    ]
+}

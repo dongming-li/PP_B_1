@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_css_page %}
+<link href="{% static 'implantapp/css/form.css' %}" rel="stylesheet">
+{% endblock head_css_page %}
+{% block title %}Heartbeat{% endblock %}
+
+{% block content %}
+<div class="form">
+  <form method="POST" class="form_main">
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="form-control btn btn-primary" />
+  </form>
+</div>
+{% endblock %}

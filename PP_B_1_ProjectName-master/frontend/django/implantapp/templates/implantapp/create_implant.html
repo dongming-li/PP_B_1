@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Implant{% endblock %}
+{% load static %}
+{% block content %}
+<h1>Create an implant</h1>
+<p>Please download and extract the zip file below. Further instructions are inside and more help can be found <a href='{% url 'help' %}'>here.</a></p>
+<a href='{% get_static_prefix %}implantapp/BuildSystem.zip' class="text-center btn btn-lg btn-danger">Download --></a>
+{% endblock content %}
+

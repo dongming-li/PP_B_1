@@ -1,0 +1,4 @@
+# All packages are latest stable versions as of 10NOV2017
+Django==1.11       # LTS version of Django
+gunicorn==19.7.1   # Python WSGI Production Server
+psycopg2==2.7.3.2  # PostgreSQL + Python "adapter"

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_css_page %}
+<link href="{% static 'implantapp/css/form.css' %}" rel="stylesheet">
+{% endblock head_css_page %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+<h1>Register for an account</h1>
+<div class="form">
+  <form method="POST" class="form_main">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="form-control btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

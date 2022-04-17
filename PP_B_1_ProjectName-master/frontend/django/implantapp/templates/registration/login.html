@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_css_page %}
+<link href="{% static 'implantapp/css/form.css' %}" rel="stylesheet">
+{% endblock head_css_page %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h1>Login</h1> 
+{% if form.errors %}
+<p>Your username and password combo are invalid. Try again.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+  <p>Your account doesn't have access to this page.</p>
+  {% else %}
+  <p>Please log in.</p>
+  {% endif %}
+{% endif %}
+
+<div class="form">
+  <form method="post" action="{% url 'login' %}" class="form_main">
+  {% csrf_token %}
+  <div>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+  </div>
+  <div>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+  </div>
+
+  <div>
+    <input type="submit" value="login" class="form-control btn btn-primary"/>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </div>
+  </form>
+</div>
+{% endblock %}

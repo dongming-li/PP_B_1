@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block nav-home %}
+<li class="nav-item active">
+  <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+</li>
+{% endblock %}
+
+{% block content %}
+<h1>Welcome{% if request.user.is_authenticated %}, {{ request.user.username }}{% endif %}.</h1>
+{% if request.user.is_authenticated %}
+<h2>-- Quick Look -- </h2>
+<h3>You've got <span style="color:red">{{ implant_ct }}</span> active implants</h3>
+{% if implant_ct == 0 %}
+<a href='{% url 'create' %}' class="btn btn-info btn-lg">Create an implant now</a>
+{% else  %}
+<a href='{% url 'implants' %}' class="btn btn-info btn-lg">Take a look --></a>
+{% endif %}
+{% endif %}
+{% endblock %}
